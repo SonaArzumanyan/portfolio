@@ -1,0 +1,44 @@
+---
+description: Project-wide code style and quality standards
+alwaysApply: true
+---
+
+# Project Style And Quality
+
+## Core Principles
+- Prioritize readability and maintainability over clever or compact code.
+- Keep changes scoped to the requested task; avoid unrelated refactors.
+- Preserve existing behavior unless a behavior change is explicitly requested.
+
+## Code Style
+- Use consistent naming: `camelCase` for variables/functions, `PascalCase` for components/types, and `UPPER_SNAKE_CASE` for constants.
+- Prefer small, single-purpose functions and components; extract helpers when logic becomes hard to scan.
+- Keep imports tidy and remove unused code, variables, and commented-out blocks before finishing.
+- Match the existing formatting/linting setup; do not introduce a conflicting style.
+- Do not use inline styles in JSX/TSX (`style={{ ... }}` is not allowed).
+
+## Quality Expectations
+- Validate assumptions and handle edge cases with clear, predictable behavior.
+- Avoid silent failures; surface meaningful errors or fallback states where appropriate.
+- Add or update tests when behavior changes or bug fixes are introduced.
+- Keep public APIs and shared interfaces stable unless a change is required and updated everywhere.
+- Use strict TypeScript typing; avoid `any` unless explicitly justified.
+- Do not disable lint rules (`eslint-disable`, `eslint-disable-next-line`, or file-level disables are not allowed).
+
+## Component Structure
+- Each component must live in its own folder named after the component (for example: `Button/`).
+- Each component folder must include:
+- `index.tsx` for the component entry implementation.
+- `styles` file for component styles (for example: `styles.ts` or `styles.module.css`).
+- `consts` file for component-specific constants.
+- `utils` file for component-specific helper functions.
+
+## Editing And Safety
+- Do not commit secrets, credentials, or environment-specific values.
+- Avoid destructive operations and irreversible commands unless explicitly requested.
+- If uncertain about requirements, ask a concise clarifying question before implementing.
+
+## Delivery Checklist
+- Run the relevant lint/type/test commands after substantive edits.
+- Fix introduced warnings/errors when practical before concluding work.
+- Summarize what changed, why it changed, and any follow-up verification steps.
