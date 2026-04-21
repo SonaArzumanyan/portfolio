@@ -6,7 +6,7 @@ export function HomePage() {
     <div className="portfolio-screen">
       <main className="portfolio-panel">
         <header className="top-nav">
-          <span className="brand-mini">sona/kazaryan</span>
+          <span className="brand-mini">sona/arzumanyan</span>
           <ul className="top-nav-list">
             {topMenuItems.map((item) => (
               <li key={item} className={item === "Home" ? "active" : ""}>
@@ -20,7 +20,8 @@ export function HomePage() {
         <section className="content-grid">
           <aside className="left-nav">
             <h1 className="name">Sona Arzumanyan</h1>
-            <p className="role">Product Architect</p>
+            {/* Updated Role */}
+            <p className="role">Full-Stack & QA Automation Engineer</p>
             <ul>
               {leftMenuItems.map((item) => (
                 <li key={item} className={item === "Home" ? "active" : ""}>
@@ -34,22 +35,23 @@ export function HomePage() {
           <div className="main-content">
             <section className="hero">
               <div className="hero-copy">
-                <p className="hero-kicker">Frontend and Product Developer</p>
+                {/* Updated Kicker */}
+                <p className="hero-kicker">Frontend • Backend • Automation</p>
                 <h2>
-                  Architecting <br />
-                  <span>Digital Logic</span>
+                  Building Reliable <br />
+                  <span>Web Solutions</span>
                 </h2>
                 <p className="hero-text">
-                  Senior frontend developer specializing in high-performance web
-                  applications, architectural scalability, and precision-engineered user
-                  interfaces.
+                  Specializing in React-based frontend development, Node.js backends, 
+                  and automated testing frameworks to deliver high-quality, 
+                  performant software.
                 </p>
                 <div className="hero-actions">
                   <button type="button" className="btn-primary">
-                    View Methodology
+                    View My Projects
                   </button>
                   <button type="button" className="btn-secondary">
-                    The Blueprint
+                    Download CV
                   </button>
                 </div>
               </div>
@@ -59,58 +61,59 @@ export function HomePage() {
             <section className="works">
               <div className="section-title-row">
                 <div>
-                  <p className="section-kicker">Selected Works</p>
-                  <h3>Engineering Portfolio</h3>
+                  <p className="section-kicker">Recent Projects</p>
+                  <h3>Featured Engineering Work</h3>
                 </div>
-                <a href="/">View Archive</a>
+                <a href="/projects">View All Projects</a>
               </div>
               <div className="works-grid">
                 <article className="card card-large">
-                  <h4>Luminous Core Engine</h4>
+                  <h4>Full-Stack Habit Tracker</h4>
                   <p>
-                    Developing an enterprise-grade visualization engine for next-generation
-                    modeling in data spaces.
+                    A CRUD application built with Node.js and MySQL, focusing on 
+                    database schema optimization and API performance.
                   </p>
                 </article>
                 <article className="card card-image" />
                 <article className="card">
-                  <h4>Neural Network Visualizer</h4>
+                  <h4>Automation Test Suite</h4>
+                  <p>E2E testing framework using Playwright for enterprise apps.</p>
                 </article>
                 <article className="card card-wide">
-                  <h4>Architecture Consultant</h4>
-                  <p>Providing high-level technical audits and performance analysis.</p>
+                  <h4>Project Management Dashboard</h4>
+                  <p>Applying Agile methodologies to organize development sprints.</p>
                 </article>
               </div>
             </section>
 
             <footer className="bottom-footer">
               <div>
-                <h4>The Architectural Foundation</h4>
+                <h4>Technical Foundation</h4>
                 <p>
-                  A concise synthesis of process, scalability, and the mathematical beauty
-                  of clean codebases.
+                  Combining clean code practices with a "test-first" mindset 
+                  to build software that lasts.
                 </p>
               </div>
               <div className="footer-columns">
                 <div>
-                  <span>Core</span>
+                  <span>Frontend</span>
                   <p>React / Next.js</p>
                   <p>TypeScript</p>
                 </div>
                 <div>
-                  <span>Visual</span>
-                  <p>Framer Motion</p>
-                  <p>Tailwind CSS</p>
+                  <span>Automation</span>
+                  <p>Playwright / Cypress</p>
+                  <p>Jest / Postman</p>
                 </div>
                 <div>
                   <span>Backend</span>
-                  <p>Node.js</p>
-                  <p>PostgreSQL</p>
+                  <p>Node.js / Express</p>
+                  <p>PostgreSQL / MySQL</p>
                 </div>
                 <div>
-                  <span>Tools</span>
-                  <p>GitHub</p>
-                  <p>Vite</p>
+                  <span>Management</span>
+                  <p>Agile / Scrum</p>
+                  <p>Jira / Git</p>
                 </div>
               </div>
             </footer>
