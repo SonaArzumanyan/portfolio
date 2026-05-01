@@ -70,6 +70,16 @@ export const sendMessageToGemini = async ({
   userCV: string;
   jobDescription?: string;
 }): Promise<GeminiCareerResponse> => {
+  if (!GEMINI_API_KEY) {
+    const missingKeyMessage =
+      "Gemini API key is missing. Set VITE_GEMINI_API_KEY in your environment and redeploy.";
+    return {
+      raw: missingKeyMessage,
+      improvedCV: missingKeyMessage,
+      coverLetter: "",
+    };
+  }
+
   const message = buildCareerPrompt(userCV, jobDescription);
   const url = `${GEMINI_BASE_URL}/models/${GEMINI_MODEL}:generateContent`;
 
@@ -112,7 +122,7 @@ export const sendMessageToGemini = async ({
 
     console.error("Gemini API Error:", errorMessage);
 
-    const fallback = "Something went wrong. Please try again.";
+    const fallback = `Gemini request failed: ${errorMessage}`;
     return {
       raw: fallback,
       improvedCV: fallback,
