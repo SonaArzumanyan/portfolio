@@ -41,7 +41,7 @@ const parseCareerResponse = (text: string): GeminiCareerResponse => {
   };
 };
 
-const buildCareerPrompt = (userCV: string, jobDescription: string): string => `
+const buildCareerPrompt = (userCV: string, jobDescription?: string): string => `
 ${SKILLS_MD}
 
 ${RULES_MD}
@@ -53,7 +53,7 @@ CV:
 ${userCV}
 
 JOB DESCRIPTION:
-${jobDescription}
+${jobDescription?.trim() ? jobDescription : "Not provided. Generate a strong general-purpose frontend CV and cover letter."}
 
 OUTPUT FORMAT (STRICT):
 ## Improved CV
@@ -68,7 +68,7 @@ export const sendMessageToGemini = async ({
   jobDescription,
 }: {
   userCV: string;
-  jobDescription: string;
+  jobDescription?: string;
 }): Promise<GeminiCareerResponse> => {
   const message = buildCareerPrompt(userCV, jobDescription);
   const url = `${GEMINI_BASE_URL}/models/${GEMINI_MODEL}:generateContent`;

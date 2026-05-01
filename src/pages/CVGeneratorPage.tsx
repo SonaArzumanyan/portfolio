@@ -4,19 +4,20 @@ import { sendMessageToGemini } from "../api/gemini";
 import { useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { Empty } from "antd";
+import { CV_PROMPT } from "../constants/cvPrompt";
 
 const { TextArea } = Input;
 
 export const CVGeneratorPage = () => {
   const navigate = useNavigate();
-  const [userCV, setUserCV] = useState("");
+  const [userCV, setUserCV] = useState(CV_PROMPT);
   const [jobDescription, setJobDescription] = useState("");
   const [improvedCV, setImprovedCV] = useState("");
   const [coverLetter, setCoverLetter] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleGenerate = async () => {
-    if (!userCV.trim() || !jobDescription.trim()) return;
+    if (!userCV.trim()) return;
 
     setLoading(true);
     try {
@@ -61,7 +62,7 @@ export const CVGeneratorPage = () => {
         rows={8}
         value={jobDescription}
         onChange={(e) => setJobDescription(e.target.value)}
-        placeholder="Paste the target job description"
+        placeholder="Paste the target job description (optional)"
       />
 
       <Button
@@ -69,7 +70,7 @@ export const CVGeneratorPage = () => {
         onClick={handleGenerate}
         loading={loading}
         style={{ marginTop: 12 }}
-        disabled={!userCV.trim() || !jobDescription.trim()}
+        disabled={!userCV.trim()}
       >
         Generate
       </Button>
