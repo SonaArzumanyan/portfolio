@@ -1,34 +1,44 @@
 import { useState } from "react";
-import { Button, Input, Typography, Card } from "antd";
+import { Button, Input, Typography, Card, Space, Tabs } from "antd";
 import { sendMessageToGemini } from "../api/gemini";
-import { CV_PROMPT } from "../constants/cvPrompt";
-import { Space } from "antd";
 import { useNavigate } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
+import { Empty } from "antd";
 
 const { TextArea } = Input;
 
 export const CVGeneratorPage = () => {
   const navigate = useNavigate();
-  const [prompt, setPrompt] = useState(CV_PROMPT);
-  const [result, setResult] = useState("");
+  const [userCV, setUserCV] = useState("");
+  const [jobDescription, setJobDescription] = useState("");
+  const [improvedCV, setImprovedCV] = useState("");
+  const [coverLetter, setCoverLetter] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleGenerate = async () => {
-    if (!prompt.trim()) return;
+    if (!userCV.trim() || !jobDescription.trim()) return;
 
     setLoading(true);
-    try{
-    const res = await sendMessageToGemini(prompt);
+    try {
+      const res = await sendMessageToGemini({
+        userCV,
+        jobDescription,
+      });
 
-    setResult(res);
+      setImprovedCV(res.improvedCV);
+      setCoverLetter(res.coverLetter);
 
-    localStorage.setItem("cv_markdown", res);
-    } catch(error) {
+      if (res.improvedCV.trim()) {
+        localStorage.setItem("cv_markdown", res.improvedCV);
+      }
+    } catch (error) {
       console.error(error);
-    }finally{
+    } finally {
       setLoading(false);
     }
-    };
+  };
+
+  const hasResults = Boolean(improvedCV || coverLetter);
 
   return (
     <div style={{ maxWidth: 900, margin: "0 auto", padding: 24 }}>
@@ -36,11 +46,22 @@ export const CVGeneratorPage = () => {
         AI CV Generator
       </Typography.Title>
 
+      <Typography.Title level={5}>CV Input</Typography.Title>
+      <TextArea
+        rows={10}
+        value={userCV}
+        onChange={(e) => setUserCV(e.target.value)}
+        placeholder="Paste your CV in plain text or markdown"
+      />
+
+      <Typography.Title level={5} style={{ marginTop: 16 }}>
+        Job Description Input
+      </Typography.Title>
       <TextArea
         rows={8}
-        value={prompt}
-        onChange={(e) => setPrompt(e.target.value)}
-        placeholder="Paste your CV prompt here..."
+        value={jobDescription}
+        onChange={(e) => setJobDescription(e.target.value)}
+        placeholder="Paste the target job description"
       />
 
       <Button
@@ -48,45 +69,71 @@ export const CVGeneratorPage = () => {
         onClick={handleGenerate}
         loading={loading}
         style={{ marginTop: 12 }}
+        disabled={!userCV.trim() || !jobDescription.trim()}
       >
-        Generate CV
+        Generate
       </Button>
 
-          {result && (
-      <Card style={{ marginTop: 24 }}>
-        <pre style={{ whiteSpace: "pre-wrap" }}>
-          {result}
-        </pre>
+      {hasResults && (
+        <Card style={{ marginTop: 24 }}>
+          <Tabs
+            items={[
+              {
+                key: "improved-cv",
+                label: "Improved CV",
+                children: improvedCV ? (
+                  <div className="markdown">
+                    <ReactMarkdown>{improvedCV}</ReactMarkdown>
+                  </div>
+                ) : (
+                  <Empty description="No improved CV generated yet" />
+                ),
+              },
+              {
+                key: "cover-letter",
+                label: "Cover Letter",
+                children: coverLetter ? (
+                  <div className="markdown">
+                    <ReactMarkdown>{coverLetter}</ReactMarkdown>
+                  </div>
+                ) : (
+                  <Empty description="No cover letter generated yet" />
+                ),
+              },
+            ]}
+          />
 
-        <Space style={{ marginTop: 16 }}>
-          {/* Save */}
-          <Button
-            onClick={() =>
-              localStorage.setItem("cv_markdown", result)
-            }
-          >
-            Save CV
-          </Button>
+          <Space style={{ marginTop: 8 }}>
+            <Button
+              onClick={() =>
+                localStorage.setItem("cv_markdown", improvedCV)
+              }
+              disabled={!improvedCV.trim()}
+            >
+              Save CV
+            </Button>
 
-          {/* Copy */}
-          <Button
-            onClick={() =>
-              navigator.clipboard.writeText(result)
-            }
-          >
-            Copy CV
-          </Button>
+            <Button
+              onClick={() =>
+                navigator.clipboard.writeText(
+                  [improvedCV, coverLetter].filter(Boolean).join("\n\n")
+                )
+              }
+              disabled={!improvedCV.trim() && !coverLetter.trim()}
+            >
+              Copy Result
+            </Button>
 
-          {/* View */}
-          <Button
-            type="primary"
-            onClick={() => navigate("/cv")}
-          >
-            View CV
-          </Button>
-        </Space>
-      </Card>
-    )}
+            <Button
+              type="primary"
+              onClick={() => navigate("/cv")}
+              disabled={!improvedCV.trim()}
+            >
+              View CV
+            </Button>
+          </Space>
+        </Card>
+      )}
     </div>
   );
 };
