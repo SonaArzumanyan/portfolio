@@ -51,7 +51,13 @@ GitHub: https://github.com/SonaArzumanyan
 LinkedIn: www.linkedin.com/in/sona-arzumanyan
 
 Experience:
-Lecturer, HR Specialist (2023–Present), Goris State College
+Software Test Automation Engineer (2025-Present), EPAM Systems
+- Developed and maintained automated test scripts for web applications
+- Implemented test automation frameworks using Cypress and Cucumber, PLaywright
+- Collaborated with development teams to improve test coverage
+- Optimized test execution for faster feedback
+
+Lecturer, HR Specialist (2023–Present), Goris State College 
 - Teach economics, entrepreneurship, marketing, management
 - Manage HR processes and employee documentation
 - Ensure compliance with employment laws
