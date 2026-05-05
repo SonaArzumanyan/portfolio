@@ -17,7 +17,7 @@
 - Generate personalized cover letters based on:
   - User CV
   - Job description
-- Maintain professional and confident tone
+- Maintain professional a nd confident tone
 - Highlight relevant achievements and skills
 - Keep content concise and structured
 
