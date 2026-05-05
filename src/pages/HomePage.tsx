@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export function HomePage() {
   const leftMenuItems: string[] = ["Home", "About", "Projects", "Contact"];
   const topMenuItems: string[] = ["Home", "About", "Projects", "Contact"];
@@ -53,6 +55,9 @@ export function HomePage() {
                   <button type="button" className="btn-secondary">
                     Download CV
                   </button>
+                  <Link className="btn-secondary" to="/cv-generator">
+                    AI CV Generator
+                  </Link>
                 </div>
               </div>
               <div className="hero-art" />

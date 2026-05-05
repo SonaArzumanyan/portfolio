@@ -1,0 +1,22 @@
+.markdown {
+    line-height: 1.7;
+    font-size: 16px;
+  }
+  
+  .markdown h1 {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+  
+  .markdown h2 {
+    margin-top: 24px;
+    font-size: 24px;
+  }
+  
+  .markdown ul {
+    padding-left: 20px;
+  }
+  
+  .markdown li {
+    margin-bottom: 6px;
+  }

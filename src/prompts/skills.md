@@ -2,7 +2,7 @@
 
 ## 1. CV Improvement
 - Analyze and rewrite CV content for clarity and professionalism
-- Adapt CV for developer roles (React, TypeScript, UI...)
+- Adapt CV for frontend developer roles (React, TypeScript, UI)
 - Transform non-technical experience into transferable skills
 - Improve structure, readability, and impact
 - Convert CV into modern, concise markdown format
@@ -17,7 +17,7 @@
 - Generate personalized cover letters based on:
   - User CV
   - Job description
-- Maintain professional a nd confident tone
+- Maintain professional and confident tone
 - Highlight relevant achievements and skills
 - Keep content concise and structured
 
