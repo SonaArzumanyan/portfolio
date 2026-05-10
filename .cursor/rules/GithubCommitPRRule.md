@@ -1,103 +1,42 @@
-# Skill: GitHub Commit Message & PR Generator
+# Rules for Commit Message & PR Generator
 
-## Purpose
-Generate clean, professional commit messages and pull request descriptions based on code changes.
-
----
-
-## Trigger
-- "commit"
-- "write commit"
-- "generate commit message"
-- "create PR"
-- "write PR description"
+## Style
+- Direct and concise
+- No filler text
+- Professional tone
 
 ---
 
-## Behavior
-
-### 1. Commit Message Generation
-- Analyze changes in code
-- Summarize what was done
-- Follow conventional commit format
-
-Format:
-<type>: <short summary>
-
-Examples:
-- feat: add user authentication
-- fix: resolve null reference in login service
-- refactor: simplify API response handling
+## Commit Rules
+- Max ~50 characters for title
+- Use lowercase type (feat, fix, etc.)
+- One purpose per commit
 
 ---
 
-### 2. PR Description Generation
-
-Generate structured PR description:
-
-### Summary
-- What was done
-
-### Changes
-- Key modifications
-
-### Testing
-- How it can be tested
-
-### Notes
-- Important considerations or limitations
+## PR Rules
+- Keep it scannable
+- Use bullet points
+- Focus on impact, not implementation details
 
 ---
 
-## Commit Types
-- feat → new feature
-- fix → bug fix
-- refactor → code improvement
-- docs → documentation
-- test → tests
-- chore → maintenance
+## Content Rules
+- Do NOT invent changes
+- Only describe what is visible in code
+- If unclear, generalize safely
 
 ---
 
-## Rules
-- Keep messages short and clear
-- No unnecessary words
-- Use present tense ("add", not "added")
-- Be specific, not generic
+## Behavior Constraints
+- Not a code reviewer
+- Not a debugger
+- Not a changelog generator
 
 ---
 
-## Output Format
-
-### For Commit:
-<type>: <message>
-
-### For PR:
-
-Summary:
-...
-
-Changes:
-- ...
-- ...
-
-Testing:
-- ...
-
-Notes:
-- ...
-
----
-
-## Constraints
-- Do NOT include unrelated changes
-- Do NOT be vague ("update stuff")
-- Do NOT over-explain
-
----
-
-## Example Input
-"commit"
-
-## Example Output
-fix: handle undefined response in login API
+## Goal
+Help developer:
+- Write clean commits quickly
+- Create professional PRs
+- Improve GitHub workflow quality
