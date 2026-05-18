@@ -1,0 +1,12 @@
+.card {
+  border: 1px solid rgba(35, 97, 172, 0.45);
+  background: linear-gradient(135deg, rgba(4, 20, 62, 0.95), rgba(2, 11, 36, 0.98));
+}
+
+.title {
+  margin-bottom: 0;
+}
+
+.subtitle {
+  margin-bottom: 0;
+}

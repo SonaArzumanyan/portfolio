@@ -1,0 +1,152 @@
+.shell {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 100dvh;
+  background: #191a1f;
+  color: #fff;
+}
+
+.rail {
+  flex-shrink: 0;
+  width: 80px;
+  min-height: 100dvh;
+  border-right: 1px solid #404040;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.railInner {
+  width: 100%;
+  height: calc(100% - 32px);
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+}
+
+.brand {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-transform: lowercase;
+  letter-spacing: 0.06em;
+  color: rgba(200, 220, 255, 0.75);
+  font-size: 11px;
+  margin-bottom: 24px;
+  text-decoration: none;
+}
+
+.navList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  width: 100%;
+  padding: 8px 4px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 10px;
+  text-align: center;
+  line-height: 1.2;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.navLink:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.navLinkActive {
+  color: #35ccff;
+  background: rgba(53, 204, 255, 0.1);
+}
+
+.mobileHeader {
+  display: none;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .shell {
+    flex-direction: column;
+  }
+
+  .rail {
+    display: none;
+  }
+
+  .mobileHeader {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    min-height: 48px;
+    width: 100%;
+    border-bottom: 1px solid #404040;
+    background: #191a1f;
+  }
+
+  .mobileTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    height: 48px;
+    min-height: 48px;
+  }
+
+  .brandHorizontal {
+    text-transform: lowercase;
+    letter-spacing: 0.05em;
+    color: rgba(200, 220, 255, 0.8);
+    font-size: 12px;
+    text-decoration: none;
+  }
+
+  .mobileNav {
+    display: flex;
+    gap: 8px;
+    padding: 0 12px 10px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+
+  .mobileNavLink {
+    flex-shrink: 0;
+    padding: 6px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .mobileNavLink:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .mobileNavLinkActive {
+    color: #35ccff;
+    background: rgba(53, 204, 255, 0.12);
+  }
+}

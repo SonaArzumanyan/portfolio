@@ -1,0 +1,14 @@
+.shell {
+  display: flex;
+  justify-content: center;
+  padding: 18px 14px;
+  min-height: 100%;
+}
+
+.panel {
+  width: min(1100px, 100%);
+}
+
+.panelNarrow {
+  width: min(900px, 100%);
+}

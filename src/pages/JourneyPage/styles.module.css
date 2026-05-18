@@ -1,0 +1,113 @@
+.page {
+  padding: 18px 14px;
+}
+
+.panel {
+  width: min(900px, 100%);
+  margin: 0 auto;
+  border: 1px solid rgba(35, 97, 172, 0.45);
+  background: linear-gradient(135deg, rgba(4, 20, 62, 0.95), rgba(2, 11, 36, 0.98));
+  box-shadow: 0 0 0 1px rgba(110, 170, 255, 0.08) inset;
+  padding: 24px 20px 32px;
+}
+
+.header {
+  margin-bottom: 28px;
+}
+
+.kicker {
+  margin: 0 0 6px;
+  font-size: 10px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: rgba(152, 187, 238, 0.7);
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: clamp(28px, 4vw, 40px);
+}
+
+.subtitle {
+  margin: 0;
+  max-width: 520px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(183, 207, 243, 0.78);
+}
+
+.timeline {
+  position: relative;
+  margin: 0;
+  padding: 0 0 0 28px;
+  list-style: none;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: rgba(84, 136, 205, 0.45);
+}
+
+.entry {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.entry:last-child {
+  margin-bottom: 0;
+}
+
+.entry::before {
+  content: "";
+  position: absolute;
+  left: -24px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #2de0ff;
+  box-shadow: 0 0 0 3px rgba(45, 224, 255, 0.2);
+}
+
+.period {
+  margin: 0 0 4px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #7fc7ff;
+}
+
+.type {
+  display: inline-block;
+  margin: 0 0 6px;
+  padding: 2px 8px;
+  border: 1px solid rgba(84, 149, 222, 0.42);
+  border-radius: 999px;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #67cfff;
+}
+
+.entryTitle {
+  margin: 0 0 4px;
+  font-size: 18px;
+}
+
+.organization {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: rgba(200, 220, 255, 0.85);
+}
+
+.description {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.55;
+  color: rgba(186, 212, 248, 0.75);
+}

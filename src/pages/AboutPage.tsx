@@ -1,18 +1,40 @@
 import { Descriptions } from "antd";
 import { PageSection } from "../components/PageSection";
+import { PageShell } from "../components/PageShell";
 
 export function AboutPage() {
   return (
-    <PageSection title="About" subtitle="Share your experience, strengths, and work style.">
-      <Descriptions
-        column={1}
-        items={[
-          { key: "role", label: "Role", children: "Frontend Developer" },
-          { key: "experience", label: "Experience", children: "Add your years of experience" },
-          { key: "focus", label: "Focus", children: "React, TypeScript, design systems" },
-          { key: "location", label: "Location", children: "Add your location" },
-        ]}
-      />
-    </PageSection>
+    <PageShell>
+      <PageSection
+        title="About"
+        subtitle="Full-stack development with a strong focus on quality through automation."
+      >
+        <Descriptions
+          column={1}
+          items={[
+            {
+              key: "role",
+              label: "Role",
+              children: "Full-Stack & QA Automation Engineer",
+            },
+            {
+              key: "experience",
+              label: "Experience",
+              children: "Building web apps, APIs, and test automation for production teams",
+            },
+            {
+              key: "focus",
+              label: "Focus",
+              children: "React, TypeScript, Node.js, Playwright, Agile delivery",
+            },
+            {
+              key: "location",
+              label: "Location",
+              children: "Available for remote collaboration",
+            },
+          ]}
+        />
+      </PageSection>
+    </PageShell>
   );
 }

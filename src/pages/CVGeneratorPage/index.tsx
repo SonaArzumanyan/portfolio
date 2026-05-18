@@ -1,14 +1,17 @@
 import { useState } from "react";
-import { Button, Input, Typography, Card, Space, Tabs } from "antd";
-import { sendMessageToGemini } from "../api/gemini";
+import { Button, Input, Typography, Card, Space, Tabs, Empty } from "antd";
 import { useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
-import { Empty } from "antd";
-import { CV_PROMPT } from "../constants/cvPrompt";
+import { sendMessageToGemini } from "../../api/gemini";
+import { CV_PROMPT } from "../../constants/cvPrompt";
+import { PageShell } from "../../components/PageShell";
+import { CV_STORAGE_KEY, PAGE_TITLE } from "./consts";
+import { buildCopyText } from "./utils";
+import styles from "./styles.module.css";
 
 const { TextArea } = Input;
 
-export const CVGeneratorPage = () => {
+export function CVGeneratorPage() {
   const navigate = useNavigate();
   const [userCV, setUserCV] = useState(CV_PROMPT);
   const [jobDescription, setJobDescription] = useState("");
@@ -30,7 +33,7 @@ export const CVGeneratorPage = () => {
       setCoverLetter(res.coverLetter);
 
       if (res.improvedCV.trim()) {
-        localStorage.setItem("cv_markdown", res.improvedCV);
+        localStorage.setItem(CV_STORAGE_KEY, res.improvedCV);
       }
     } catch (error) {
       console.error(error);
@@ -42,9 +45,9 @@ export const CVGeneratorPage = () => {
   const hasResults = Boolean(improvedCV || coverLetter);
 
   return (
-    <div style={{ maxWidth: 900, margin: "0 auto", padding: 24 }}>
-      <Typography.Title level={2}>
-        AI CV Generator
+    <PageShell variant="narrow">
+      <Typography.Title level={2} className={styles.pageTitle}>
+        {PAGE_TITLE}
       </Typography.Title>
 
       <Typography.Title level={5}>CV Input</Typography.Title>
@@ -55,7 +58,7 @@ export const CVGeneratorPage = () => {
         placeholder="Paste your CV in plain text or markdown"
       />
 
-      <Typography.Title level={5} style={{ marginTop: 16 }}>
+      <Typography.Title level={5} className={styles.sectionTitle}>
         Job Description Input
       </Typography.Title>
       <TextArea
@@ -69,14 +72,14 @@ export const CVGeneratorPage = () => {
         type="primary"
         onClick={handleGenerate}
         loading={loading}
-        style={{ marginTop: 12 }}
+        className={styles.generateButton}
         disabled={!userCV.trim()}
       >
         Generate
       </Button>
 
       {hasResults && (
-        <Card style={{ marginTop: 24 }}>
+        <Card className={styles.resultsCard}>
           <Tabs
             items={[
               {
@@ -104,37 +107,27 @@ export const CVGeneratorPage = () => {
             ]}
           />
 
-          <Space style={{ marginTop: 8 }}>
+          <Space className={styles.actions}>
             <Button
-              onClick={() =>
-                localStorage.setItem("cv_markdown", improvedCV)
-              }
+              onClick={() => localStorage.setItem(CV_STORAGE_KEY, improvedCV)}
               disabled={!improvedCV.trim()}
             >
               Save CV
             </Button>
 
             <Button
-              onClick={() =>
-                navigator.clipboard.writeText(
-                  [improvedCV, coverLetter].filter(Boolean).join("\n\n")
-                )
-              }
+              onClick={() => navigator.clipboard.writeText(buildCopyText(improvedCV, coverLetter))}
               disabled={!improvedCV.trim() && !coverLetter.trim()}
             >
               Copy Result
             </Button>
 
-            <Button
-              type="primary"
-              onClick={() => navigate("/cv")}
-              disabled={!improvedCV.trim()}
-            >
+            <Button type="primary" onClick={() => navigate("/cv")} disabled={!improvedCV.trim()}>
               View CV
             </Button>
           </Space>
         </Card>
       )}
-    </div>
+    </PageShell>
   );
-};
+}
