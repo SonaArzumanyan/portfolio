@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { PageFrame } from "../components/PageFrame";
+import { Portrait } from "../components/Portrait";
 import { PROJECTS } from "../data/projects";
 
 const FEATURED_HOME = PROJECTS.filter((p) => p.featured).slice(0, 3);
@@ -26,7 +27,9 @@ export function HomePage() {
             </Link>
           </div>
         </div>
-        <div className="page-hero-portrait" aria-hidden="true" />
+        <div className="page-hero-portrait">
+          <Portrait variant="home" />
+        </div>
       </section>
 
       <section className="works">

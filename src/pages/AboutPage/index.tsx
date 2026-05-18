@@ -1,6 +1,7 @@
 import { Progress } from "antd";
 import { Link } from "react-router-dom";
 import { PageFrame } from "../../components/PageFrame";
+import { Portrait } from "../../components/Portrait";
 import {
   CLOSING_QUOTE,
   EVOLUTION_CARDS,
@@ -42,7 +43,9 @@ export function AboutPage() {
               ))}
             </div>
           </div>
-          <div className={styles.portrait} aria-hidden="true" />
+          <div className={styles.portrait}>
+            <Portrait variant="about" />
+          </div>
         </section>
 
         <section className={styles.section} aria-labelledby="evolution-heading">
