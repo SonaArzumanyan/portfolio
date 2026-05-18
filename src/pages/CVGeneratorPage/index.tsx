@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { sendMessageToGemini } from "../../api/gemini";
 import { CV_PROMPT } from "../../constants/cvPrompt";
-import { PageShell } from "../../components/PageShell";
+import { PageFrame } from "../../components/PageFrame";
 import { CV_STORAGE_KEY, PAGE_TITLE } from "./consts";
 import { buildCopyText } from "./utils";
 import styles from "./styles.module.css";
@@ -45,7 +45,8 @@ export function CVGeneratorPage() {
   const hasResults = Boolean(improvedCV || coverLetter);
 
   return (
-    <PageShell variant="narrow">
+    <PageFrame>
+      <div className={styles.pageContent}>
       <Typography.Title level={2} className={styles.pageTitle}>
         {PAGE_TITLE}
       </Typography.Title>
@@ -128,6 +129,7 @@ export function CVGeneratorPage() {
           </Space>
         </Card>
       )}
-    </PageShell>
+      </div>
+    </PageFrame>
   );
 }

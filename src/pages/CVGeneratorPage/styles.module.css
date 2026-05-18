@@ -1,3 +1,8 @@
+.pageContent {
+  padding: 24px 20px 36px;
+  max-width: 900px;
+}
+
 .pageTitle {
   margin-top: 0;
 }

@@ -1,113 +1,131 @@
-.page {
-  padding: 18px 14px;
+.content {
+  padding: 28px 20px 36px;
 }
 
-.panel {
-  width: min(900px, 100%);
-  margin: 0 auto;
-  border: 1px solid rgba(35, 97, 172, 0.45);
-  background: linear-gradient(135deg, rgba(4, 20, 62, 0.95), rgba(2, 11, 36, 0.98));
-  box-shadow: 0 0 0 1px rgba(110, 170, 255, 0.08) inset;
-  padding: 24px 20px 32px;
-}
-
-.header {
-  margin-bottom: 28px;
-}
-
-.kicker {
-  margin: 0 0 6px;
-  font-size: 10px;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
-  color: rgba(152, 187, 238, 0.7);
+.hero {
+  margin-bottom: 32px;
+  max-width: 640px;
 }
 
 .title {
-  margin: 0 0 8px;
-  font-size: clamp(28px, 4vw, 40px);
+  margin: 0 0 12px;
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1.05;
 }
 
 .subtitle {
   margin: 0;
-  max-width: 520px;
-  font-size: 13px;
-  line-height: 1.5;
+  font-size: 14px;
+  line-height: 1.6;
   color: rgba(183, 207, 243, 0.78);
 }
 
-.timeline {
-  position: relative;
-  margin: 0;
-  padding: 0 0 0 28px;
-  list-style: none;
+.experienceGrid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  margin-bottom: 36px;
 }
 
-.timeline::before {
-  content: "";
-  position: absolute;
-  left: 8px;
-  top: 4px;
-  bottom: 4px;
-  width: 2px;
-  background: rgba(84, 136, 205, 0.45);
+.experienceCard {
+  border: 1px solid rgba(84, 136, 205, 0.3);
+  background: rgba(10, 32, 80, 0.45);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-.entry {
-  position: relative;
-  margin-bottom: 24px;
+.experienceVisual {
+  min-height: 140px;
+  background-size: cover;
+  background-position: center;
 }
 
-.entry:last-child {
-  margin-bottom: 0;
-}
-
-.entry::before {
-  content: "";
-  position: absolute;
-  left: -24px;
-  top: 6px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #2de0ff;
-  box-shadow: 0 0 0 3px rgba(45, 224, 255, 0.2);
+.experienceBody {
+  padding: 16px;
 }
 
 .period {
-  margin: 0 0 4px;
+  margin: 0 0 6px;
   font-size: 11px;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #7fc7ff;
 }
 
-.type {
-  display: inline-block;
-  margin: 0 0 6px;
-  padding: 2px 8px;
-  border: 1px solid rgba(84, 149, 222, 0.42);
-  border-radius: 999px;
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #67cfff;
-}
-
-.entryTitle {
-  margin: 0 0 4px;
+.cardTitle {
+  margin: 0 0 8px;
   font-size: 18px;
 }
 
-.organization {
-  margin: 0 0 8px;
-  font-size: 13px;
-  color: rgba(200, 220, 255, 0.85);
-}
-
-.description {
+.cardDescription {
   margin: 0;
   font-size: 12px;
   line-height: 1.55;
   color: rgba(186, 212, 248, 0.75);
+}
+
+.philosophyHeader {
+  margin-bottom: 16px;
+}
+
+.philosophyTitle {
+  margin: 6px 0 0;
+  font-size: 26px;
+}
+
+.philosophyGrid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr 1.4fr;
+}
+
+.philosophyCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 200px;
+  padding: 20px;
+  border: 1px solid rgba(84, 136, 205, 0.3);
+  background: rgba(8, 24, 58, 0.65);
+  border-radius: 10px;
+}
+
+.philosophyCardWide {
+  grid-column: span 1;
+}
+
+.philosophyCardTitle {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+.philosophyCardText {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.55;
+  color: rgba(186, 212, 248, 0.75);
+}
+
+.statBlock {
+  margin-top: 20px;
+}
+
+.statValue {
+  margin: 0;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1;
+  color: #2de0ff;
+}
+
+.statLabel {
+  margin: 6px 0 0;
+  font-size: 11px;
+  color: rgba(152, 187, 238, 0.7);
+}
+
+@media (max-width: 768px) {
+  .philosophyGrid {
+    grid-template-columns: 1fr;
+  }
 }

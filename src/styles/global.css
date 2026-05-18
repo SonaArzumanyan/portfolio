@@ -330,6 +330,175 @@ a {
   color: #7fc7ff;
 }
 
+/* Shared page layouts (mockup-aligned) */
+.page-hero {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 24px;
+  padding: 28px 20px 24px;
+}
+
+.page-hero-copy {
+  padding-top: 8px;
+}
+
+.page-hero-title {
+  margin: 0;
+  font-size: clamp(40px, 5.5vw, 58px);
+  line-height: 0.95;
+}
+
+.page-hero-title span {
+  color: #2de0ff;
+}
+
+.page-hero-portrait {
+  min-height: 320px;
+  border: 1px solid rgba(101, 155, 221, 0.4);
+  border-radius: 10px;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(93, 142, 255, 0.4), transparent 52%),
+    linear-gradient(180deg, rgba(20, 38, 84, 0.72), rgba(5, 14, 44, 0.92));
+}
+
+.home-portfolio-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1.2fr 1fr;
+  grid-template-rows: auto auto;
+}
+
+.home-project-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-project-card-large {
+  grid-row: span 2;
+  min-height: 280px;
+}
+
+.home-project-visual {
+  flex: 1;
+  min-height: 100px;
+  margin: -14px -14px 12px;
+  border-radius: 8px 8px 0 0;
+}
+
+.home-project-visual-omni-compute,
+.project-visual-omni-compute {
+  background:
+    linear-gradient(135deg, rgba(20, 60, 120, 0.8), rgba(5, 20, 50, 0.9)),
+    radial-gradient(circle at 70% 30%, rgba(76, 201, 240, 0.35), transparent 45%);
+}
+
+.home-project-visual-neural-analytics,
+.project-visual-neural-analytics {
+  background:
+    radial-gradient(circle at 30% 40%, rgba(52, 204, 255, 0.4), transparent 45%),
+    radial-gradient(circle at 75% 60%, rgba(123, 119, 255, 0.45), transparent 40%),
+    rgba(12, 31, 73, 0.85);
+}
+
+.home-project-visual-atlas-crm,
+.project-visual-atlas-crm {
+  background:
+    linear-gradient(160deg, rgba(30, 50, 90, 0.9), rgba(8, 18, 40, 0.95)),
+    repeating-linear-gradient(
+      90deg,
+      rgba(100, 150, 220, 0.08) 0,
+      rgba(100, 150, 220, 0.08) 2px,
+      transparent 2px,
+      transparent 12px
+    );
+}
+
+.home-project-visual-prism-render,
+.project-visual-prism-render {
+  background:
+    radial-gradient(circle at 60% 50%, rgba(255, 200, 120, 0.25), transparent 40%),
+    linear-gradient(120deg, rgba(40, 80, 140, 0.7), rgba(10, 25, 60, 0.9));
+}
+
+.home-project-visual-portfolio,
+.project-visual-portfolio {
+  background: rgba(12, 31, 73, 0.65);
+}
+
+.home-project-visual-habit-tracker,
+.project-visual-habit-tracker {
+  background: rgba(15, 45, 90, 0.7);
+}
+
+.home-project-visual-automation-suite,
+.project-visual-automation-suite {
+  background: rgba(20, 55, 100, 0.75);
+}
+
+.home-project-visual-pm-dashboard,
+.project-visual-pm-dashboard {
+  background: rgba(18, 40, 85, 0.7);
+}
+
+.experience-visual-epam {
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)),
+    repeating-linear-gradient(
+      -12deg,
+      rgba(180, 190, 200, 0.15) 0,
+      rgba(180, 190, 200, 0.15) 1px,
+      transparent 1px,
+      transparent 8px
+    ),
+    #1a2230;
+}
+
+.experience-visual-pivot {
+  background:
+    linear-gradient(180deg, rgba(5, 15, 35, 0.9), rgba(2, 8, 20, 0.95)),
+    radial-gradient(circle at 40% 50%, rgba(43, 207, 255, 0.15), transparent 50%);
+  font-family: ui-monospace, monospace;
+}
+
+.experience-visual-hr {
+  background:
+    linear-gradient(180deg, rgba(30, 35, 45, 0.8), rgba(10, 12, 18, 0.95)),
+    radial-gradient(circle at 60% 40%, rgba(200, 200, 210, 0.12), transparent 45%);
+}
+
+.site-footer {
+  margin-top: 14px;
+  padding: 24px 20px 16px;
+  border-top: 1px solid rgba(89, 136, 204, 0.26);
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.site-footer-intro {
+  max-width: 280px;
+}
+
+.site-footer-intro h4 {
+  margin: 0 0 8px;
+}
+
+.site-footer-intro p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(182, 207, 244, 0.7);
+}
+
+.site-footer .footer-columns p a {
+  color: rgba(186, 212, 248, 0.75);
+  font-size: 12px;
+}
+
+.site-footer .footer-columns p a:hover {
+  color: #7cc4ff;
+}
+
 @media (max-width: 940px) {
   .content-grid {
     grid-template-columns: 1fr;
@@ -344,15 +513,25 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .works-grid {
+  .page-hero {
     grid-template-columns: 1fr;
+  }
+
+  .works-grid,
+  .home-portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-project-card-large {
+    grid-row: auto;
   }
 
   .card-wide {
     grid-column: auto;
   }
 
-  .bottom-footer {
+  .bottom-footer,
+  .site-footer {
     flex-direction: column;
   }
 }

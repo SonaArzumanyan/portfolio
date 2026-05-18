@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { NavLink } from "react-router-dom";
-import { BRAND_LABEL, NAV_ITEMS } from "./consts";
+import { BRAND_LABEL, NAV_ITEMS, RESUME_PATH } from "./consts";
 import { getNavLinkClassName } from "./utils";
 import styles from "./styles.module.css";
 
@@ -32,6 +32,9 @@ export function SideNav({ children }: SideNavProps) {
               </li>
             ))}
           </ul>
+          <NavLink to={RESUME_PATH} className={styles.resumeLink}>
+            CV
+          </NavLink>
         </div>
       </aside>
 

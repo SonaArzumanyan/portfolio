@@ -75,6 +75,17 @@
   background: rgba(53, 204, 255, 0.1);
 }
 
+.resumeLink {
+  margin-top: 12px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #04112d;
+  background: linear-gradient(90deg, #2bcfff, #199dff);
+}
+
 .mobileHeader {
   display: none;
 }

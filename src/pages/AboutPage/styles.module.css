@@ -1,0 +1,185 @@
+.content {
+  padding: 28px 20px 36px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.title {
+  margin: 12px 0 16px;
+  font-size: clamp(28px, 4.5vw, 42px);
+  line-height: 1.1;
+}
+
+.title span {
+  color: #2de0ff;
+}
+
+.bioLabel {
+  margin: 0 0 8px;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(152, 187, 238, 0.7);
+}
+
+.bio {
+  margin: 0 0 24px;
+  max-width: 520px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(183, 207, 243, 0.78);
+}
+
+.portrait {
+  min-height: 320px;
+  border: 1px solid rgba(101, 155, 221, 0.4);
+  border-radius: 10px;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(93, 142, 255, 0.35), transparent 55%),
+    linear-gradient(180deg, rgba(20, 38, 84, 0.72), rgba(5, 14, 44, 0.92));
+}
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.skillRow {
+  display: grid;
+  gap: 6px;
+}
+
+.skillHeader {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.section {
+  margin-bottom: 32px;
+}
+
+.sectionTitle {
+  margin: 6px 0 16px;
+  font-size: 24px;
+}
+
+.evolutionGrid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.evolutionCard {
+  padding: 16px;
+  border: 1px solid rgba(84, 136, 205, 0.3);
+  background: rgba(10, 32, 80, 0.45);
+  border-radius: 10px;
+}
+
+.evolutionCard h3 {
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+.evolutionCard p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(186, 212, 248, 0.75);
+}
+
+.timeline {
+  position: relative;
+  margin: 0;
+  padding: 0 0 0 28px;
+  list-style: none;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: rgba(84, 136, 205, 0.45);
+}
+
+.timelineEntry {
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.timelineEntry::before {
+  content: "";
+  position: absolute;
+  left: -24px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #2de0ff;
+}
+
+.period {
+  margin: 0 0 4px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #7fc7ff;
+}
+
+.entryTitle {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.entryDescription {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.55;
+  color: rgba(186, 212, 248, 0.75);
+}
+
+.cta {
+  padding: 28px 20px;
+  border: 1px solid rgba(78, 128, 201, 0.25);
+  background: rgba(5, 20, 54, 0.6);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.quote {
+  margin: 0 0 18px;
+  font-size: clamp(18px, 3vw, 24px);
+  line-height: 1.4;
+  color: rgba(220, 235, 255, 0.92);
+}
+
+.ctaActions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .portrait {
+    min-height: 220px;
+  }
+
+  .evolutionGrid {
+    grid-template-columns: 1fr;
+  }
+}

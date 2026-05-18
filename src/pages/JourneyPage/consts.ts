@@ -1,49 +1,67 @@
-export type JourneyEntry = {
+export type ExperienceCard = {
   id: string;
-  period: string;
   title: string;
-  organization: string;
+  period: string;
   description: string;
-  type: "work" | "education" | "certification";
+  visualClass: string;
 };
 
-export const JOURNEY_ENTRIES: JourneyEntry[] = [
+export type PhilosophyBlock = {
+  id: string;
+  title: string;
+  description: string;
+  stat: string;
+  statLabel: string;
+  wide?: boolean;
+};
+
+export const PAGE_TITLE = "From Theory to Scale.";
+export const PAGE_SUBTITLE =
+  "A non-linear journey from economic foundations and organizational logic to human-centric software architecture.";
+
+export const EXPERIENCE_CARDS: ExperienceCard[] = [
   {
-    id: "role-current",
-    period: "2024 — Present",
-    title: "Full-Stack & QA Automation Engineer",
-    organization: "Freelance / Personal Projects",
+    id: "epam",
+    title: "EPAM Systems",
+    period: "2021 — Present",
     description:
-      "Building React frontends, Node.js APIs, and Playwright-based test automation with a focus on reliable delivery.",
-    type: "work",
+      "Leading frontend delivery for enterprise platforms—performance budgets, design systems, and cross-team technical alignment.",
+    visualClass: "experience-visual-epam",
   },
   {
-    id: "role-qa",
-    period: "2022 — 2024",
-    title: "QA Automation Specialist",
-    organization: "Software Teams",
+    id: "pivot",
+    title: "The Pivot to Craft",
+    period: "2017 — 2021",
     description:
-      "Designed E2E suites, API checks, and CI pipelines to catch regressions early across web products.",
-    type: "work",
+      "Transitioned from process optimization into hands-on engineering—React, APIs, and quality automation as core craft.",
+    visualClass: "experience-visual-pivot",
   },
   {
-    id: "edu-degree",
-    period: "2018 — 2022",
-    title: "Computer Science & Engineering",
-    organization: "University",
+    id: "hr",
+    title: "Human Capital Strategy",
+    period: "2015 — 2017",
     description:
-      "Coursework in algorithms, databases, software design, and web development fundamentals.",
-    type: "education",
-  },
-  {
-    id: "cert-playwright",
-    period: "2023",
-    title: "Test Automation with Playwright",
-    organization: "Professional Development",
-    description: "Advanced patterns for stable selectors, parallel runs, and reporting in CI.",
-    type: "certification",
+      "Built operational frameworks for talent and workforce planning—foundation for human-centric product thinking.",
+    visualClass: "experience-visual-hr",
   },
 ];
 
-export const PAGE_TITLE = "Journey";
-export const PAGE_SUBTITLE = "Roles, education, and certifications that shaped my engineering path.";
+export const PHILOSOPHY_BLOCKS: PhilosophyBlock[] = [
+  {
+    id: "cognitive",
+    title: "Cognitive Synthesis",
+    description:
+      "Merging human psychology with software architecture—every interface decision balances clarity, speed, and trust.",
+    stat: "20",
+    statLabel: "Years of growth mindset",
+  },
+  {
+    id: "future",
+    title: "Refining the Future",
+    description:
+      "Bridging design vision and engineering execution so teams ship coherent products at scale.",
+    stat: "3",
+    statLabel: "Core principles: clarity, quality, velocity",
+    wide: true,
+  },
+];

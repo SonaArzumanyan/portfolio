@@ -1,114 +1,98 @@
 import { Link } from "react-router-dom";
+import { PageFrame } from "../components/PageFrame";
+import { PROJECTS } from "../data/projects";
+
+const FEATURED_HOME = PROJECTS.filter((p) => p.featured).slice(0, 3);
 
 export function HomePage() {
   return (
-    <div className="portfolio-screen">
-      <main className="portfolio-panel">
-        <section className="content-grid">
-          <aside className="left-nav">
-            <h1 className="name">Sona Arzumanyan</h1>
-            <p className="role">Full-Stack & QA Automation Engineer</p>
-            <ul>
-              <li className="active">
-                <span className="dot" />
-                Overview
-              </li>
-              <li>
-                <span className="dot" />
-                Frontend • Backend • Automation
-              </li>
-            </ul>
-          </aside>
-
-          <div className="main-content">
-            <section className="hero">
-              <div className="hero-copy">
-                <p className="hero-kicker">Frontend • Backend • Automation</p>
-                <h2>
-                  Building Reliable <br />
-                  <span>Web Solutions</span>
-                </h2>
-                <p className="hero-text">
-                  Specializing in React-based frontend development, Node.js backends, and automated
-                  testing frameworks to deliver high-quality, performant software.
-                </p>
-                <div className="hero-actions">
-                  <Link to="/projects" className="btn-primary">
-                    View My Projects
-                  </Link>
-                  <Link to="/cv" className="btn-secondary">
-                    Download CV
-                  </Link>
-                  <Link className="btn-secondary" to="/cv-generator">
-                    AI CV Generator
-                  </Link>
-                </div>
-              </div>
-              <div className="hero-art" />
-            </section>
-
-            <section className="works">
-              <div className="section-title-row">
-                <div>
-                  <p className="section-kicker">Recent Projects</p>
-                  <h3>Featured Engineering Work</h3>
-                </div>
-                <Link to="/projects">View All Projects</Link>
-              </div>
-              <div className="works-grid">
-                <article className="card card-large">
-                  <h4>Full-Stack Habit Tracker</h4>
-                  <p>
-                    A CRUD application built with Node.js and MySQL, focusing on database schema
-                    optimization and API performance.
-                  </p>
-                </article>
-                <article className="card card-image" />
-                <article className="card">
-                  <h4>Automation Test Suite</h4>
-                  <p>E2E testing framework using Playwright for enterprise apps.</p>
-                </article>
-                <article className="card card-wide">
-                  <h4>Project Management Dashboard</h4>
-                  <p>Applying Agile methodologies to organize development sprints.</p>
-                </article>
-              </div>
-            </section>
-
-            <footer className="bottom-footer">
-              <div>
-                <h4>Technical Foundation</h4>
-                <p>
-                  Combining clean code practices with a &quot;test-first&quot; mindset to build
-                  software that lasts.
-                </p>
-              </div>
-              <div className="footer-columns">
-                <div>
-                  <span>Frontend</span>
-                  <p>React / Next.js</p>
-                  <p>TypeScript</p>
-                </div>
-                <div>
-                  <span>Automation</span>
-                  <p>Playwright / Cypress</p>
-                  <p>Jest / Postman</p>
-                </div>
-                <div>
-                  <span>Backend</span>
-                  <p>Node.js / Express</p>
-                  <p>PostgreSQL / MySQL</p>
-                </div>
-                <div>
-                  <span>Management</span>
-                  <p>Agile / Scrum</p>
-                  <p>Jira / Git</p>
-                </div>
-              </div>
-            </footer>
+    <PageFrame>
+      <section className="page-hero">
+        <div className="page-hero-copy">
+          <p className="hero-kicker">Senior Frontend Engineer</p>
+          <h1 className="page-hero-title">
+            Architecting <span>Digital Logic</span>
+          </h1>
+          <p className="hero-text">
+            Full-stack and QA automation engineer specializing in high-performance React
+            applications, reliable APIs, and test-first delivery for production teams.
+          </p>
+          <div className="hero-actions">
+            <Link to="/journey" className="btn-primary">
+              View Methodology
+            </Link>
+            <Link to="/about" className="btn-secondary">
+              The Blueprint
+            </Link>
           </div>
-        </section>
-      </main>
-    </div>
+        </div>
+        <div className="page-hero-portrait" aria-hidden="true" />
+      </section>
+
+      <section className="works">
+        <div className="section-title-row">
+          <div>
+            <p className="section-kicker">Selected work</p>
+            <h3>Engineering Portfolio</h3>
+          </div>
+          <Link to="/projects">View all projects</Link>
+        </div>
+        <div className="home-portfolio-grid">
+          {FEATURED_HOME.map((project, index) => (
+            <article
+              key={project.id}
+              className={`card home-project-card ${index === 0 ? "home-project-card-large" : ""}`}
+            >
+              <div className={`home-project-visual home-project-visual-${project.id}`} />
+              <h4>{project.title}</h4>
+              <p>{project.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <footer className="site-footer">
+        <div className="site-footer-intro">
+          <h4>The Architectural Foundation</h4>
+          <p>
+            Systems thinking, human-centric design, and measurable quality across the stack.
+          </p>
+        </div>
+        <div className="footer-columns">
+          <div>
+            <span>Core</span>
+            <p>
+              <Link to="/">Home</Link>
+            </p>
+            <p>
+              <Link to="/about">About</Link>
+            </p>
+          </div>
+          <div>
+            <span>Vision</span>
+            <p>
+              <Link to="/projects">Projects</Link>
+            </p>
+            <p>
+              <Link to="/journey">Journey</Link>
+            </p>
+          </div>
+          <div>
+            <span>Success</span>
+            <p>
+              <Link to="/cv">Resume</Link>
+            </p>
+            <p>
+              <Link to="/contact">Contact</Link>
+            </p>
+          </div>
+          <div>
+            <span>Tools</span>
+            <p>React / TypeScript</p>
+            <p>Playwright / Node.js</p>
+          </div>
+        </div>
+      </footer>
+    </PageFrame>
   );
 }
