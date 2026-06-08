@@ -1,22 +1,47 @@
 .markdown {
-    line-height: 1.7;
-    font-size: 16px;
-  }
-  
-  .markdown h1 {
-    font-size: 32px;
-    margin-bottom: 16px;
-  }
-  
-  .markdown h2 {
-    margin-top: 24px;
-    font-size: 24px;
-  }
-  
-  .markdown ul {
-    padding-left: 20px;
-  }
-  
-  .markdown li {
-    margin-bottom: 6px;
-  }
+  line-height: 1.7;
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4 {
+  color: var(--text-primary);
+}
+
+.markdown p,
+.markdown li {
+  color: var(--text-secondary);
+}
+
+.markdown strong {
+  color: var(--text-primary);
+}
+
+.markdown a {
+  color: var(--text-accent);
+}
+
+.markdown a:hover {
+  color: var(--text-accent-strong);
+}
+
+.markdown h1 {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.markdown h2 {
+  margin-top: 24px;
+  font-size: 24px;
+}
+
+.markdown ul {
+  padding-left: 20px;
+}
+
+.markdown li {
+  margin-bottom: 6px;
+}

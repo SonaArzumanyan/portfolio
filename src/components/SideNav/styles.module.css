@@ -4,7 +4,7 @@
   width: 100%;
   min-height: 100dvh;
   background: #191a1f;
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .rail {
@@ -32,7 +32,7 @@
   transform: rotate(180deg);
   text-transform: lowercase;
   letter-spacing: 0.06em;
-  color: rgba(200, 220, 255, 0.75);
+  color: var(--text-primary);
   font-size: 11px;
   margin-bottom: 24px;
   text-decoration: none;
@@ -58,7 +58,7 @@
   width: 100%;
   padding: 8px 4px;
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--text-secondary);
   font-size: 10px;
   text-align: center;
   line-height: 1.2;
@@ -66,12 +66,12 @@
 }
 
 .navLink:hover {
-  color: #fff;
+  color: var(--text-primary);
   background: rgba(255, 255, 255, 0.06);
 }
 
 .navLinkActive {
-  color: #35ccff;
+  color: var(--text-accent-strong);
   background: rgba(53, 204, 255, 0.1);
 }
 
@@ -82,7 +82,7 @@
   font-size: 11px;
   font-weight: 600;
   text-decoration: none;
-  color: #04112d;
+  color: var(--text-on-accent);
   background: linear-gradient(90deg, #2bcfff, #199dff);
 }
 
@@ -128,7 +128,7 @@
   .brandHorizontal {
     text-transform: lowercase;
     letter-spacing: 0.05em;
-    color: rgba(200, 220, 255, 0.8);
+    color: var(--text-primary);
     font-size: 12px;
     text-decoration: none;
   }
@@ -146,18 +146,18 @@
     padding: 6px 10px;
     border-radius: 4px;
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.65);
+    color: var(--text-secondary);
     font-size: 12px;
     white-space: nowrap;
   }
 
   .mobileNavLink:hover {
-    color: #fff;
+    color: var(--text-primary);
     background: rgba(255, 255, 255, 0.06);
   }
 
   .mobileNavLinkActive {
-    color: #35ccff;
+    color: var(--text-accent-strong);
     background: rgba(53, 204, 255, 0.12);
   }
 }

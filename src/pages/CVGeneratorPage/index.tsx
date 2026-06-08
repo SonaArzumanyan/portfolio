@@ -1,42 +1,53 @@
 import { useState } from "react";
-import { Button, Input, Typography, Card, Space, Tabs, Empty } from "antd";
+import { Alert, Button, Input, Typography, Card, Space, Tabs, Empty, message } from "antd";
 import { useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { sendMessageToGemini } from "../../api/gemini";
-import { CV_PROMPT } from "../../constants/cvPrompt";
 import { PageFrame } from "../../components/PageFrame";
-import { CV_STORAGE_KEY, PAGE_TITLE } from "./consts";
-import { buildCopyText } from "./utils";
+import { getDisplayCv, saveCv } from "../../utils/cvStorage";
+import { PAGE_TITLE } from "./consts";
+import { buildCopyText, parseCareerGenerationResponse } from "./utils";
 import styles from "./styles.module.css";
 
 const { TextArea } = Input;
 
 export function CVGeneratorPage() {
   const navigate = useNavigate();
-  const [userCV, setUserCV] = useState(CV_PROMPT);
+  const [userCV, setUserCV] = useState(getDisplayCv);
   const [jobDescription, setJobDescription] = useState("");
   const [improvedCV, setImprovedCV] = useState("");
   const [coverLetter, setCoverLetter] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const canGenerate = Boolean(userCV.trim() && jobDescription.trim());
 
   const handleGenerate = async () => {
-    if (!userCV.trim()) return;
+    if (!canGenerate) return;
 
     setLoading(true);
+    setError("");
+
     try {
-      const res = await sendMessageToGemini({
+      const response = await sendMessageToGemini({
         userCV,
         jobDescription,
       });
+      const result = parseCareerGenerationResponse(response);
 
-      setImprovedCV(res.improvedCV);
-      setCoverLetter(res.coverLetter);
-
-      if (res.improvedCV.trim()) {
-        localStorage.setItem(CV_STORAGE_KEY, res.improvedCV);
+      if (!result.ok) {
+        setError(result.message);
+        return;
       }
-    } catch (error) {
-      console.error(error);
+
+      setImprovedCV(result.improvedCV);
+      setCoverLetter(result.coverLetter);
+    } catch (generateError) {
+      const errorMessage =
+        generateError instanceof Error
+          ? generateError.message
+          : "Failed to generate CV and cover letter.";
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -66,7 +77,7 @@ export function CVGeneratorPage() {
         rows={8}
         value={jobDescription}
         onChange={(e) => setJobDescription(e.target.value)}
-        placeholder="Paste the target job description (optional)"
+        placeholder="Paste the target job description (required)"
       />
 
       <Button
@@ -74,10 +85,14 @@ export function CVGeneratorPage() {
         onClick={handleGenerate}
         loading={loading}
         className={styles.generateButton}
-        disabled={!userCV.trim()}
+        disabled={!canGenerate}
       >
-        Generate
+        Generate CV & Cover Letter
       </Button>
+
+      {error && (
+        <Alert type="error" message={error} showIcon className={styles.errorAlert} />
+      )}
 
       {hasResults && (
         <Card className={styles.resultsCard}>
@@ -110,14 +125,26 @@ export function CVGeneratorPage() {
 
           <Space className={styles.actions}>
             <Button
-              onClick={() => localStorage.setItem(CV_STORAGE_KEY, improvedCV)}
+              onClick={() => {
+                saveCv(improvedCV);
+                message.success("CV saved for the Resume page.");
+              }}
               disabled={!improvedCV.trim()}
             >
               Save CV
             </Button>
 
             <Button
-              onClick={() => navigator.clipboard.writeText(buildCopyText(improvedCV, coverLetter))}
+              onClick={async () => {
+                try {
+                  await navigator.clipboard.writeText(
+                    buildCopyText(improvedCV, coverLetter)
+                  );
+                  message.success("Results copied to clipboard.");
+                } catch {
+                  message.error("Could not copy results to clipboard.");
+                }
+              }}
               disabled={!improvedCV.trim() && !coverLetter.trim()}
             >
               Copy Result

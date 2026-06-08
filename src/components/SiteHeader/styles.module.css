@@ -11,7 +11,7 @@
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: rgba(220, 235, 255, 0.9);
+  color: var(--text-primary);
   text-decoration: none;
   white-space: nowrap;
 }
@@ -27,17 +27,17 @@
 
 .navLink {
   font-size: 13px;
-  color: rgba(173, 206, 255, 0.72);
+  color: var(--text-secondary);
   text-decoration: none;
   transition: color 0.15s ease;
 }
 
 .navLink:hover {
-  color: #e9f7ff;
+  color: var(--text-primary);
 }
 
 .navLinkActive {
-  color: #4cc9f0;
+  color: var(--text-accent-strong);
 }
 
 .actions {
@@ -52,7 +52,7 @@
   font-size: 12px;
   font-weight: 600;
   text-decoration: none;
-  color: #04112d;
+  color: var(--text-on-accent);
   background: linear-gradient(90deg, #2bcfff, #199dff);
   white-space: nowrap;
 }

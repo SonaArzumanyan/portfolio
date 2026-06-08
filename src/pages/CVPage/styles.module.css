@@ -2,3 +2,24 @@
   padding: 24px 20px 36px;
   max-width: 900px;
 }
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.title {
+  margin: 0 !important;
+}
+
+.actions {
+  margin-left: auto;
+}
+
+.alert {
+  margin-bottom: 20px;
+}

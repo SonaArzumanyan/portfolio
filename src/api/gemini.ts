@@ -14,6 +14,35 @@ export type GeminiCareerResponse = {
   coverLetter: string;
 };
 
+const GEMINI_ERROR_PREFIXES = [
+  "Gemini API key is missing",
+  "Gemini request failed:",
+] as const;
+
+const hasGeminiErrorPrefix = (value: string): boolean =>
+  GEMINI_ERROR_PREFIXES.some((prefix) => value.startsWith(prefix));
+
+export function isGeminiErrorResponse(response: GeminiCareerResponse): boolean {
+  return (
+    hasGeminiErrorPrefix(response.improvedCV) ||
+    hasGeminiErrorPrefix(response.coverLetter)
+  );
+}
+
+export function getGeminiErrorMessage(
+  response: GeminiCareerResponse
+): string | null {
+  if (hasGeminiErrorPrefix(response.improvedCV)) {
+    return response.improvedCV;
+  }
+
+  if (hasGeminiErrorPrefix(response.coverLetter)) {
+    return response.coverLetter;
+  }
+
+  return null;
+}
+
 const parseCareerResponse = (text: string): GeminiCareerResponse => {
   const improvedMarker = "## Improved CV";
   const coverMarker = "## Cover Letter";
@@ -41,19 +70,20 @@ const parseCareerResponse = (text: string): GeminiCareerResponse => {
   };
 };
 
-const buildCareerPrompt = (userCV: string, jobDescription?: string): string => `
+const buildCareerPrompt = (userCV: string, jobDescription: string): string => `
 ${SKILLS_MD}
 
 ${RULES_MD}
 
 TASK:
-Improve the following CV and generate a tailored cover letter.
+Use the following CV as the source of truth. Tailor it for the job description and generate a matching cover letter.
+Do not invent experience, employers, or qualifications that are not supported by the source CV.
 
 CV:
 ${userCV}
 
 JOB DESCRIPTION:
-${jobDescription?.trim() ? jobDescription : "Not provided. Generate a strong general-purpose frontend CV and cover letter."}
+${jobDescription}
 
 OUTPUT FORMAT (STRICT):
 ## Improved CV
@@ -68,7 +98,7 @@ export const sendMessageToGemini = async ({
   jobDescription,
 }: {
   userCV: string;
-  jobDescription?: string;
+  jobDescription: string;
 }): Promise<GeminiCareerResponse> => {
   if (!GEMINI_API_KEY) {
     const missingKeyMessage =

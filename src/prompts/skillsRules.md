@@ -35,3 +35,9 @@
 - Do not generate misleading or false claims
 - Avoid overly complex language
 - Ensure output is suitable for real job applications
+
+## Fallback & Source CV Rules
+- Treat the provided CV as the canonical source; never remove or replace it in the app
+- If generation fails, the user must still be able to view the source CV from `src/data/cv.ts`
+- Do not auto-save generated content; saving is an explicit user action
+- Keep generated CV and cover letter separate in the output format

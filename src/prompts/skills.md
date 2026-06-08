@@ -35,3 +35,9 @@
 ## 6. Career Guidance (Optional Extension)
 - Suggest missing skills based on job requirements
 - Recommend improvements for stronger applications
+
+## 7. Fallback & Source CV
+- The source CV lives in `src/data/cv.ts` and is never deleted by the app
+- Use the provided CV as the source of truth; tailor it without inventing new experience
+- API output is optional; on failure the UI continues showing the source CV
+- Only persist an AI-generated CV when the user explicitly saves it
